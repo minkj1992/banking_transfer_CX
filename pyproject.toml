@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "banking-fullstack"
+version = "0.1.0"
+description = ""
+authors = ["제민욱 <minkj1992@gmail.com>"]
+readme = "README.md"
+packages = [{include = "django_project"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
