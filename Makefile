@@ -1,6 +1,6 @@
 PYTHON=./.venv/bin/python
 
-.PHONY: run test migrate clean createsuperuser collectstatic
+.PHONY: run test locust migrate clean createsuperuser collectstatic
 
 
 run: 
@@ -8,6 +8,10 @@ run:
 
 test:
 	@$(PYTHON) manage.py test --settings=django_project.settings.test
+
+locust:
+	@echo "(info) Needs to call this command first -> $ make run"
+	locust --host=http://127.0.0.1:8000
 
 
 _makemigration:
@@ -33,3 +37,5 @@ createsuperuser:
 
 collectstatic:
 	@$(PYTHON) manage.py collectstatic --noinput
+
+
