@@ -41,7 +41,7 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
-            join(BASE_DIR, "templates"),
+            join(BASE_DIR.parent, "templates"),
         ],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -75,7 +75,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 # /banking_transfer/static
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = "static/"
 
 # /banking_transfer/static

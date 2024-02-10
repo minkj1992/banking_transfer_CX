@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certificate Detail</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @media print {
+        body,
+        html {
+          width: 100%;
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          background: #fff;
+        }
+        .container {
+          box-shadow: none;
+          border: initial;
+          width: auto;
+          height: auto;
+          min-height: 100%;
+          padding-left: 20mm;
+          padding-right: 20mm;
+        }
+        .print-btn {
+                display: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <div class="container mx-auto p-4 bg-white shadow-lg rounded-lg my-8">
+      <div class="border-b pb-4">
+        <h1 class="text-3xl font-bold text-center mb-4">송금확인증</h1>
+      </div>
+      <div class="pt-4 px-8">
+        <p class="text-lg mb-2">
+          <strong>이름:</strong> {{ certificate.user.name }}
+        </p>
+        <p class="text-lg mb-2">
+          <strong>계좌 정보:</strong> {{ certificate.user.get_bank_name_display}} | {{ certificate.user.bank_account }}
+        </p>
+        <p class="text-lg mb-2">
+          <strong>송금 날짜:</strong> {{ certificate.creation_date }}
+        </p>
+        <p class="text-lg mb-2"><strong>금액:</strong> 10,000,000원</p>
+        <hr class="h-px my-8 bg-gray-200 border-0">
+        <div class="mt-6">
+          <h2 class="text-2xl font-semibold mb-3">송금 상세내역</h2>
+          <div class="pl-4">
+            {% for transfer in transfers %}
+            <p class="mb-1 text-lg">
+              {{ transfer.transfer_id }}은행 {{ transfer.transfer_id }}계좌에서
+            </p>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="flex justify-end items-center mt-8">
+          <img
+            class="w-20 h-20"
+            src="https://github.com/minkj1992/banking_transfer_CX/assets/37536298/5b8d9364-2169-4bbf-b1ad-0fcd751258f9"
+            alt="QR Code"
+          />
+        </div>
+      </div>
+      <div class="flex justify-center mt-8">
+        <button class="print-btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="window.print()">Print</button>
+    </div>
+    </div>
+  </body>
+</html>

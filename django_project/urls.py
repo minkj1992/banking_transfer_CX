@@ -6,9 +6,11 @@ from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 from rest_framework.urlpatterns import format_suffix_patterns
 
+from apps.certificates import views
 from apps.core import views as core_views
 
 API_PREFIX = "api/v1/"
+UI_PREFIX = "ui"
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -28,6 +30,11 @@ _urlpatterns = [
         "health",
         core_views.ping,
         name="health-check",
+    ),
+    path(
+        f"{UI_PREFIX}/certificates/<int:id>/",
+        views.certificate_detail,
+        name="certificate-page",
     ),
     path(
         API_PREFIX,
@@ -52,5 +59,5 @@ _swagger_patterns = [
 urlpatterns = (
     _urlpatterns
     + _swagger_patterns
-    + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 )

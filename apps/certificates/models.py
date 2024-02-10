@@ -48,7 +48,7 @@ class CertificateTransfer(models.Model):
         Certificate, on_delete=models.CASCADE, related_name="transfers"
     )
     transfer_id = models.CharField(max_length=100)
-    order = models.IntegerField(validators=[MinValueValidator(0)])  # started from 0 ..
+    order = models.IntegerField(validators=[MinValueValidator(0)], db_index=True)
 
     def __str__(self):
         return self.name
