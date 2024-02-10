@@ -63,7 +63,6 @@ def generate_certificate_pdf(user, original_certificate, transfers):
         )
         current_height -= line_spacing
 
-    # Draw a horizontal line before the footer with increased padding
     current_height -= section_spacing
     p.line(70, current_height, width - 70, current_height)
 

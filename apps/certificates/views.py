@@ -15,7 +15,6 @@ from apps.certificates.serializers import (
     CertificateQuerySerializer,
 )
 from apps.certificates.utils import generate_certificate_pdf
-from django_project.settings.base import STATIC_URL
 
 logger = logging.getLogger(__name__)
 
@@ -75,15 +74,12 @@ class CertificatePDFDownloadView(APIView):
             )
 
         try:
-            # Fetch the original certificate and related data
             original_certificate = Certificate.objects.get(pk=id)
             user = original_certificate.user
             transfers = original_certificate.transfers.all().order_by("order")
 
-            # to pdf
             buffer = generate_certificate_pdf(user, original_certificate, transfers)
 
-            # save row
             Certificate.objects.create(user=user, status=CertificateStatus.DOWNLOADED)
             return FileResponse(buffer, as_attachment=True, filename="송금확인증.pdf")
         except Certificate.DoesNotExist:
