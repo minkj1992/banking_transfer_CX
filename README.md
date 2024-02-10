@@ -13,5 +13,13 @@ poetry shell
 ## cli
 
 ```
+# run 
 make run
+
+# migrate
+make migrate
+
+# test
+make test
+
 ```
