@@ -16,7 +16,6 @@ class Bank(models.TextChoices):
 
 
 class User(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100)
     bank_name = models.CharField(max_length=50, choices=Bank.choices)
     bank_account = models.CharField(max_length=100, help_text="bank account number")
@@ -31,7 +30,6 @@ class CertificateStatus(models.TextChoices):
 
 
 class Certificate(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     status = models.CharField(
         max_length=50,

@@ -4,6 +4,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+FONT_PATH = os.path.join(BASE_DIR.parent, "fonts", "NanumGothic-Regular.ttf")
 
 SECRET_KEY = "F645B5810A118A3C8A2C68C720F31084388B586B549E4667D6000B74BB007D36"
 DEBUG = True
