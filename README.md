@@ -24,6 +24,10 @@ make migrate
 
 # test
 make test
+
+# load test
+# before call it, $ make run first
+make locust
 ```
 
 ## download 
@@ -37,3 +41,7 @@ make test
 http://127.0.0.1:8000/ui/certificates/<CERTIFICATE_ID>/
 
 ![](./docs/transfer.png)
+
+## load test
+
+![](./docs/locust.png)
