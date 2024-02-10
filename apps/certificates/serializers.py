@@ -1,5 +1,6 @@
 import logging
 
+from django.db import transaction
 from rest_framework import serializers
 
 from apps.certificates.models import Certificate, CertificateTransfer, User
@@ -34,6 +35,7 @@ class CertificateCommandSerializer(serializers.ModelSerializer):
         model = Certificate
         fields = ["id", "user", "status", "transfers"]
 
+    @transaction.atomic
     def create(self, validated_data):
         transfers_data = validated_data.pop("transfers", [])
         user_data = validated_data.pop("user")

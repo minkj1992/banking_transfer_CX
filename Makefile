@@ -1,11 +1,13 @@
 PYTHON=./.venv/bin/python
-POETRY=./.venv/bin/poetry
 
-.PHONY: run migrate clean createsuperuser collectstatic
+.PHONY: run test migrate clean createsuperuser collectstatic
 
 
 run: 
 	@$(PYTHON) manage.py runserver
+
+test:
+	@$(PYTHON) manage.py test --settings=django_project.settings.test
 
 
 _makemigration:
