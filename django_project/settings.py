@@ -1,3 +1,4 @@
+import os
 from os.path import join
 from pathlib import Path
 
@@ -17,9 +18,12 @@ _THIRDPARTY_APPS = [
     "rest_framework",
     "drf_yasg",
 ]
-INSTALLED_APPS = [
+_LOCAL_APPS = [
     "apps.core",
-] + _THIRDPARTY_APPS
+    "apps.certificates",
+]
+INSTALLED_APPS = _THIRDPARTY_APPS + _LOCAL_APPS
+
 
 MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
@@ -61,10 +65,38 @@ LANGUAGE_CODE = "ko-kr"
 TIME_ZONE = "Asia/Seoul"
 USE_I18N = True
 USE_TZ = False
-STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/4.2/howto/static-files/
+
+# /banking_transfer/static
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_URL = "static/"
+
+# /banking_transfer/static
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"
 
 SWAGGER_SETTINGS = {
     "USE_SESSION_AUTH": False,
     "DEFAULT_AUTO_SCHEMA_CLASS": "apps.core.swagger.AutoSchemaWithExample",
+}
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
+        },
+    },
+    "loggers": {
+        "django.db.backends": {
+            "handlers": ["console"],
+            "level": "DEBUG",
+        },
+    },
 }

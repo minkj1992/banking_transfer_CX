@@ -8,9 +8,10 @@ packages = [{include = "django_project"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-django = "^4.2.1"
 djangorestframework = "^3.14.0"
 drf-yasg = "^1.21.7"
+django-test-plus = "^2.2.3"
+django = "^4.2.1"
 
 
 [build-system]

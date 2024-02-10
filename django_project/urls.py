@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import include, path, re_path
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
@@ -6,7 +8,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 from apps.core import views as core_views
 
-API_PREFIX = "api/v1"
+API_PREFIX = "api/v1/"
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -22,11 +24,17 @@ schema_view = get_schema_view(
 
 
 _urlpatterns = [
-    re_path("health", core_views.ping, name="ping"),
-    # re_path(
-    #     f"{API_PREFIX}/certificates/",
-    #     include(("apps.fantem.urls", "fantem"), namespace="fantem"),
-    # ),
+    re_path(
+        "health",
+        core_views.ping,
+        name="health-check",
+    ),
+    path(
+        API_PREFIX,
+        include(
+            "apps.certificates.urls",
+        ),
+    ),
 ]
 
 _swagger_patterns = [
@@ -41,4 +49,8 @@ _swagger_patterns = [
     path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
 ]
 
-urlpatterns = format_suffix_patterns(_urlpatterns) + _swagger_patterns
+urlpatterns = (
+    _urlpatterns
+    + _swagger_patterns
+    + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+)

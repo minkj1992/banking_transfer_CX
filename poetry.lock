@@ -2,13 +2,13 @@
 
 [[package]]
 name = "asgiref"
-version = "3.6.0"
+version = "3.7.2"
 description = "ASGI specs, helper code, and adapters"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "asgiref-3.6.0-py3-none-any.whl", hash = "sha256:71e68008da809b957b7ee4b43dbccff33d1b23519fb8344e33f049897077afac"},
-    {file = "asgiref-3.6.0.tar.gz", hash = "sha256:9567dfe7bd8d3c8c892227827c41cce860b368104c3431da67a0c5a65a949506"},
+    {file = "asgiref-3.7.2-py3-none-any.whl", hash = "sha256:89b2ef2247e3b562a16eef663bc0e2e703ec6468e2fa8a5cd61cd449786d4f6e"},
+    {file = "asgiref-3.7.2.tar.gz", hash = "sha256:9e0ce3aa93a819ba5b45120216b23878cf6e8525eb3848653452b4192b92afed"},
 ]
 
 [package.extras]
@@ -16,13 +16,13 @@ tests = ["mypy (>=0.800)", "pytest", "pytest-asyncio"]
 
 [[package]]
 name = "django"
-version = "4.2.1"
+version = "4.2.10"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "Django-4.2.1-py3-none-any.whl", hash = "sha256:066b6debb5ac335458d2a713ed995570536c8b59a580005acb0732378d5eb1ee"},
-    {file = "Django-4.2.1.tar.gz", hash = "sha256:7efa6b1f781a6119a10ac94b4794ded90db8accbe7802281cd26f8664ffed59c"},
+    {file = "Django-4.2.10-py3-none-any.whl", hash = "sha256:a2d4c4d4ea0b6f0895acde632071aff6400bfc331228fc978b05452a0ff3e9f1"},
+    {file = "Django-4.2.10.tar.gz", hash = "sha256:b1260ed381b10a11753c73444408e19869f3241fc45c985cd55a30177c789d13"},
 ]
 
 [package.dependencies]
@@ -33,6 +33,20 @@ tzdata = {version = "*", markers = "sys_platform == \"win32\""}
 [package.extras]
 argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
+
+[[package]]
+name = "django-test-plus"
+version = "2.2.3"
+description = "\"django-test-plus provides useful additions to Django's default TestCase\""
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "django-test-plus-2.2.3.tar.gz", hash = "sha256:72e1ca5dcaaf4ad73c9c796ad6e0dc165db39f706c3ad822074d961f72eed743"},
+    {file = "django_test_plus-2.2.3-py3-none-any.whl", hash = "sha256:5a8e26c9bf8eab092012c2cce9c605e0dba5a15879771feeb992c424504a18fe"},
+]
+
+[package.extras]
+test = ["factory-boy", "flake8", "pyflakes", "pytest", "pytest-cov", "pytest-django", "pytest-pythonpath"]
 
 [[package]]
 name = "djangorestframework"
@@ -196,4 +210,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "d216468a7d4dc055564c2790814c8218ce1a38ece6b0f4e657bb168340e10a56"
+content-hash = "d9d8f39c54412882ba14eb92f891caea2ffb2a6f20fa2532c8c415d59cfb0738"
